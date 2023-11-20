@@ -1,5 +1,7 @@
 # Recipe Research 
 Author: Tianyi Chen
+
+This is a project for DSC80 Fall 2023
 ## Introdutcion
 As food becomes more and more abundant, people begin to pursue the deliciousness and nutritional value of food on the basis of eating enough. As a data scientist, we now have two dataset `RAW_recipes.csv` on 83,782 recipes for research and `RAW_interactions.csv` that records 731,927 reviews from customs that records their responses to distinct recipes. 
 
@@ -17,13 +19,14 @@ Therefore, the result of question4 really intrigues me. And I believe the result
 
 ## Cleaning and EDA
 During this section, we need to: 
-    1. Merge the two data set
-    Our research question need two columns from two separate dataset. We need to merge the two dataset which so that the columns are in the same dataframe.
 
-    2. Convert each column to appropriate datatype and deal with the potential empty entries or NAN in the data set
-    This step helps our further analysis for the dataset.
+1. Merge the two data set
+Our research question need two columns from two separate dataset. We need to merge the two dataset which so that the columns are in the same dataframe.
 
-    3. Aggregate and create a new column to better help study the research question. 
+2. Convert each column to appropriate datatype and deal with the potential empty entries or NAN in the data set
+   This step helps our further analysis for the dataset.
+
+3. Aggregate and create a new column to better help study the research question. 
     One recipe may get multiple ratings. For our research question, we aggregate the ratings of each distinct recipe and create a new column `avg_rating` indicating the average rating for each recipe
 
 We first perform a inner merge between the two dataset `recipe` and `interaction` by recipe id. We choose inner merge because recipes that does not have rating and reviews for recipes that we do not have information on will not help our research project. 
@@ -112,7 +115,7 @@ We also noticed that some of the recipe takes unusually long time to finish. A r
 
 After some analysis, we decided to only keep the recipes that takes less than 12 hours (720 minutes). That reduces our dataframe from 83781 rows to 82891 rows
 
- ## Univariate Analysis
+## Univariate Analysis
 
 During this step, we want to take a look at the distribution of relevant columns. With our research question, we need to check the distribution of column `minutes` and the column `avg_rating`.
 
