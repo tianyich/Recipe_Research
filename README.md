@@ -99,6 +99,7 @@ We see that all the missing values are non-numeric values. Especially, the two c
 To better study our reseach question, we aggregated the merged dataset by recipe Id and created a new column `avg_rating` indicating the average rating for each recipe. We also drop the other columns other than `Id`, `Minutes` and `avg_rating` as they are not relevant to our research question.
 
 The result is show below
+
 |    |     id |   avg_rating |   minutes |
 |---:|-------:|-------------:|----------:|
 |  0 | 275022 |            3 |        50 |
@@ -148,11 +149,34 @@ We see that the average rating for recipe in each time period is almost the same
 
 ## Interesting Aggregation
 
+We would like to investigate whether the complexity of recipes grows as time goes. We assess the complexity of a recipe by the number of ingredients and number of steps.
+
+We first create a pivot table to show the mean/median of number of ingredients and number of steps of recipes in each year. 
+
+|   year |   ('mean', 'n_ingredients') |   ('mean', 'n_steps') |   ('median', 'n_ingredients') |   ('median', 'n_steps') |
+|-------:|----------------------------:|----------------------:|------------------------------:|------------------------:|
+|   2008 |                     8.90138 |               9.66866 |                             8 |                       8 |
+|   2009 |                     9.05131 |               9.91732 |                             9 |                       9 |
+|   2010 |                     9.01983 |               9.79332 |                             9 |                       9 |
+|   2011 |                     9.171   |               9.96863 |                             9 |                       9 |
+|   2012 |                    10.0428  |              11.6352  |                            10 |                      10 |
+|   2013 |                     9.33759 |              11.5148  |                             9 |                      10 |
+|   2014 |                     9.07695 |              11.8915  |                             8 |                      11 |
+|   2015 |                    10.6525  |              13.7651  |                            10 |                      12 |
+|   2016 |                     9.54545 |              12.442   |                             9 |                      10 |
+|   2017 |                    10.1939  |              14.4357  |                            10 |                      13 |
+|   2018 |                    12.328   |              18.0354  |                            12 |                      16 |
+
+Then we create a line plot to see the trend
+<iframe src="plots/aggre.html" width=800 height=600 frameBorder=0></iframe>
+
+An interesting observation is that there is a drastic increase in the complexity of recipes after 2016. 
+
 
 ## Assessment of Missingness
 By looking at the missing value in our original merged dataframe. 
 
-|                |    |
+|                |     |
 |:---------------|----:|
 | name           |   1 |
 | id             |   0 |
